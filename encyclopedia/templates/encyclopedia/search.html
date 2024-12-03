@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia - Search '{{search}}'
+{% endblock %}
+
+{% block body %}
+    {% if coincidences %}
+
+    <h1>All results for {{search_raw}}</h1>
+
+    <ul>
+        {% for coincidence in coincidences %}
+            <li> <a href="{% url 'encyclopedia:entry' coincidence %}"> {{ coincidence }} </a> </li>
+        {% endfor %}
+    </ul>
+
+    {% else %}
+
+    <h1> {{default}} </h1>
+
+    {% endif %}
+
+{% endblock %}
